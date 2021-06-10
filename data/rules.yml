@@ -1,0 +1,13 @@
+version: "2.0"
+
+rules:
+
+- rule: Dizer adeus todas as vezes que o usuario dizer adeus 
+  steps:
+  - intent: adeus
+  - action: utter_goodbye
+
+- rule: Dizer 'Sou um bot' todas as vezes que o usuario perguntar
+  steps:
+  - intent: bot_pergunta
+  - action: utter_iamabot

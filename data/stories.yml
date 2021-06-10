@@ -1,0 +1,117 @@
+version: "2.0"
+
+stories:
+
+- story: pacote feliz
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: bom_humor
+  - action: utter_happy
+
+- story: pacote triste 1
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: mau_humor
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: afirmação
+  - action: utter_happy
+
+- story: pacote triste 2
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: mau_humor
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: negação
+  - action: utter_goodbye
+
+- story: pesquisa pacote feliz
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: formulario_saude
+  - action: form{"name":"formulario_saude"}
+  - action: form{"name":"null"}
+  - intent: adeus
+  - action: utter_no_worries
+  - action: utter_goodbye
+
+- story: parar pesquisa
+  steps: 
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: formulario_saude
+  - action: form{"name":"formulario_saude"}
+  - intent: transbordo
+  - action: utter_ask_continue
+  - intent: negação
+  - action: action_deactivete_form 
+  - action: form{"name":"null"}
+  - action: utter_goodbye
+
+- story: continuar pesquisa
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: formulario_saude
+  - action: form{"name":"formulario_saude"}
+  - intent: transbordo
+  - action: utter_ask_continue
+  - intent: afirmação
+  - action: formulario_saude
+  - action: form{"name":"null"}
+  - action: utter_slot_values
+
+- story: continuar pesquisa
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: afirmação
+  - action: formulario_saude
+  - action: form{"name":"formulario_saude"}
+  - intent: pergunta_exercicio
+  - action: utter_exercise_info
+  - action: formulario_saude
+  - action: form{"name":"null"}
+  - action: utter_goodbye
+
+
+
+- story: sem pesquisa
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: negação
+  - action: formulario_saude
+  - action: utter_goodbye
+  
+
+- story: pergunta dieta
+  steps:
+  - intent: pergunta_comida_saudavel
+  - action: utter_dieta_info
+
+- story: pergunta de stress
+  steps:
+  - intent: pergunta_stress_alto 
+  - action: utter_stress_info  
+
+- story: pergunta de stress
+  steps:
+  - intent: pergunta_exercicio 
+  - action: utter_exercicio_info
+- story: interactive_story_1
+  steps:
+  - intent: saudação
+  - action: utter_greet
+  - intent: pergunta_stress_alto
+  - action: utter_stress_info
+  - intent: pergunta_comida_saudavel
+  - action: utter_dieta_info
